@@ -2,13 +2,12 @@
 
 export TF_CPP_MIN_LOG_LEVEL=3
 
-DATASET_DIR=/workspace/data/flowers
-TRAIN_DIR=/workspace/flowers-models/inception_v3
-CHECKPOINT_PATH=/workspace/my_checkpoints/inception_v3.ckpt
+DATASET_DIR=/workspace/choose-network-architecture/data/flowers3
+TRAIN_DIR=/workspace/choose-network-architecture/train_logs/1_flowers3
+CHECKPOINT_PATH=/workspace/choose-network-architecture/checkpoints/inception_v3.ckpt
 DATASET_NAME=flowers
 MODEL_NAME=inception_v3
 
-cd /workspace/models/slim
 python train_image_classifier.py \
     --train_dir=${TRAIN_DIR} \
     --dataset_dir=${DATASET_DIR} \
