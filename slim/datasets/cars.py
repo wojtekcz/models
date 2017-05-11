@@ -29,7 +29,7 @@ from datasets import dataset_utils
 
 slim = tf.contrib.slim
 
-_FILE_PATTERN = 'cars_%s_*.tfrecord'
+_FILE_PATTERN = 'car-reco3_%s_*.tfrecord'
 
 # car images count = 10025
 SPLITS_TO_SIZES = {'train': 9675, 'validation': 350}

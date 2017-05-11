@@ -31,12 +31,13 @@ import math
 import os
 import random
 import sys
+from pathlib2 import Path
 
 import tensorflow as tf
 
 from datasets import dataset_utils
 
-_PHOTOS_DIR='old_polish_cars_v4_photos'
+_PHOTOS_DIR='car-reco3-photos'
 
 # The URL where the Cars data can be downloaded.
 _DATA_URL = 'https://dl.dropboxusercontent.com/u/19206083/old_polish_cars_v4_photos-2017-02-28.tgz'
@@ -95,13 +96,18 @@ def _get_filenames_and_classes(dataset_dir):
   for directory in directories:
     for filename in os.listdir(directory):
       path = os.path.join(directory, filename)
-      photo_filenames.append(path)
+
+      p = Path(path)
+      if p.suffix == '.jpg':
+        photo_filenames.append(path)
+      # else:
+      #   print(p)
 
   return photo_filenames, sorted(class_names)
 
 
 def _get_dataset_filename(dataset_dir, split_name, shard_id):
-  output_filename = 'cars_%s_%05d-of-%05d.tfrecord' % (
+  output_filename = 'car-reco3_%s_%05d-of-%05d.tfrecord' % (
       split_name, shard_id, _NUM_SHARDS)
   return os.path.join(dataset_dir, output_filename)
 
@@ -133,8 +139,9 @@ def _convert_dataset(split_name, filenames, class_names_to_ids, dataset_dir):
           start_ndx = shard_id * num_per_shard
           end_ndx = min((shard_id+1) * num_per_shard, len(filenames))
           for i in range(start_ndx, end_ndx):
-            sys.stdout.write('\r>> Converting image %d/%d shard %d' % (
-                i+1, len(filenames), shard_id))
+            fn = Path(filenames[i])
+            sys.stdout.write('\r>> Converting image %d/%d shard %d, %s' % (
+                i+1, len(filenames), shard_id, fn.name))
             sys.stdout.flush()
 
             # Read the filename:
@@ -190,7 +197,7 @@ def run(dataset_dir):
     print('Dataset files already exist. Exiting without re-creating them.')
     return
 
-  dataset_utils.download_and_uncompress_tarball(_DATA_URL, dataset_dir)
+  #dataset_utils.download_and_uncompress_tarball(_DATA_URL, dataset_dir)
   photo_filenames, class_names = _get_filenames_and_classes(dataset_dir)
   class_names_to_ids = dict(zip(class_names, range(len(class_names))))
 
@@ -210,6 +217,6 @@ def run(dataset_dir):
   labels_to_class_names = dict(zip(range(len(class_names)), class_names))
   dataset_utils.write_label_file(labels_to_class_names, dataset_dir)
 
-  _clean_up_temporary_files(dataset_dir)
+  #_clean_up_temporary_files(dataset_dir)
   print('\nFinished converting the Cars dataset!')
 
