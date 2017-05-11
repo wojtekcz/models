@@ -1,0 +1,166 @@
+usage: train_image_classifier.py [-h] [--master MASTER]
+                                 [--train_dir TRAIN_DIR]
+                                 [--num_clones NUM_CLONES]
+                                 [--clone_on_cpu [CLONE_ON_CPU]]
+                                 [--noclone_on_cpu]
+                                 [--worker_replicas WORKER_REPLICAS]
+                                 [--num_ps_tasks NUM_PS_TASKS]
+                                 [--num_readers NUM_READERS]
+                                 [--num_preprocessing_threads NUM_PREPROCESSING_THREADS]
+                                 [--log_every_n_steps LOG_EVERY_N_STEPS]
+                                 [--save_summaries_secs SAVE_SUMMARIES_SECS]
+                                 [--save_interval_secs SAVE_INTERVAL_SECS]
+                                 [--task TASK] [--weight_decay WEIGHT_DECAY]
+                                 [--optimizer OPTIMIZER]
+                                 [--adadelta_rho ADADELTA_RHO]
+                                 [--adagrad_initial_accumulator_value ADAGRAD_INITIAL_ACCUMULATOR_VALUE]
+                                 [--adam_beta1 ADAM_BETA1]
+                                 [--adam_beta2 ADAM_BETA2]
+                                 [--opt_epsilon OPT_EPSILON]
+                                 [--ftrl_learning_rate_power FTRL_LEARNING_RATE_POWER]
+                                 [--ftrl_initial_accumulator_value FTRL_INITIAL_ACCUMULATOR_VALUE]
+                                 [--ftrl_l1 FTRL_L1] [--ftrl_l2 FTRL_L2]
+                                 [--momentum MOMENTUM]
+                                 [--rmsprop_decay RMSPROP_DECAY]
+                                 [--learning_rate_decay_type LEARNING_RATE_DECAY_TYPE]
+                                 [--learning_rate LEARNING_RATE]
+                                 [--end_learning_rate END_LEARNING_RATE]
+                                 [--label_smoothing LABEL_SMOOTHING]
+                                 [--learning_rate_decay_factor LEARNING_RATE_DECAY_FACTOR]
+                                 [--num_epochs_per_decay NUM_EPOCHS_PER_DECAY]
+                                 [--sync_replicas [SYNC_REPLICAS]]
+                                 [--nosync_replicas]
+                                 [--replicas_to_aggregate REPLICAS_TO_AGGREGATE]
+                                 [--moving_average_decay MOVING_AVERAGE_DECAY]
+                                 [--dataset_name DATASET_NAME]
+                                 [--dataset_split_name DATASET_SPLIT_NAME]
+                                 [--dataset_dir DATASET_DIR]
+                                 [--labels_offset LABELS_OFFSET]
+                                 [--model_name MODEL_NAME]
+                                 [--preprocessing_name PREPROCESSING_NAME]
+                                 [--batch_size BATCH_SIZE]
+                                 [--train_image_size TRAIN_IMAGE_SIZE]
+                                 [--max_number_of_steps MAX_NUMBER_OF_STEPS]
+                                 [--checkpoint_path CHECKPOINT_PATH]
+                                 [--checkpoint_exclude_scopes CHECKPOINT_EXCLUDE_SCOPES]
+                                 [--trainable_scopes TRAINABLE_SCOPES]
+                                 [--ignore_missing_vars [IGNORE_MISSING_VARS]]
+                                 [--noignore_missing_vars]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --master MASTER       The address of the TensorFlow master to use.
+  --train_dir TRAIN_DIR
+                        Directory where checkpoints and event logs are written
+                        to.
+  --num_clones NUM_CLONES
+                        Number of model clones to deploy.
+  --clone_on_cpu [CLONE_ON_CPU]
+                        Use CPUs to deploy clones.
+  --noclone_on_cpu
+  --worker_replicas WORKER_REPLICAS
+                        Number of worker replicas.
+  --num_ps_tasks NUM_PS_TASKS
+                        The number of parameter servers. If the value is 0,
+                        then the parameters are handled locally by the worker.
+  --num_readers NUM_READERS
+                        The number of parallel readers that read data from the
+                        dataset.
+  --num_preprocessing_threads NUM_PREPROCESSING_THREADS
+                        The number of threads used to create the batches.
+  --log_every_n_steps LOG_EVERY_N_STEPS
+                        The frequency with which logs are print.
+  --save_summaries_secs SAVE_SUMMARIES_SECS
+                        The frequency with which summaries are saved, in
+                        seconds.
+  --save_interval_secs SAVE_INTERVAL_SECS
+                        The frequency with which the model is saved, in
+                        seconds.
+  --task TASK           Task id of the replica running the training.
+  --weight_decay WEIGHT_DECAY
+                        The weight decay on the model weights.
+  --optimizer OPTIMIZER
+                        The name of the optimizer, one of "adadelta",
+                        "adagrad", "adam","ftrl", "momentum", "sgd" or
+                        "rmsprop".
+  --adadelta_rho ADADELTA_RHO
+                        The decay rate for adadelta.
+  --adagrad_initial_accumulator_value ADAGRAD_INITIAL_ACCUMULATOR_VALUE
+                        Starting value for the AdaGrad accumulators.
+  --adam_beta1 ADAM_BETA1
+                        The exponential decay rate for the 1st moment
+                        estimates.
+  --adam_beta2 ADAM_BETA2
+                        The exponential decay rate for the 2nd moment
+                        estimates.
+  --opt_epsilon OPT_EPSILON
+                        Epsilon term for the optimizer.
+  --ftrl_learning_rate_power FTRL_LEARNING_RATE_POWER
+                        The learning rate power.
+  --ftrl_initial_accumulator_value FTRL_INITIAL_ACCUMULATOR_VALUE
+                        Starting value for the FTRL accumulators.
+  --ftrl_l1 FTRL_L1     The FTRL l1 regularization strength.
+  --ftrl_l2 FTRL_L2     The FTRL l2 regularization strength.
+  --momentum MOMENTUM   The momentum for the MomentumOptimizer and
+                        RMSPropOptimizer.
+  --rmsprop_decay RMSPROP_DECAY
+                        Decay term for RMSProp.
+  --learning_rate_decay_type LEARNING_RATE_DECAY_TYPE
+                        Specifies how the learning rate is decayed. One of
+                        "fixed", "exponential", or "polynomial"
+  --learning_rate LEARNING_RATE
+                        Initial learning rate.
+  --end_learning_rate END_LEARNING_RATE
+                        The minimal end learning rate used by a polynomial
+                        decay learning rate.
+  --label_smoothing LABEL_SMOOTHING
+                        The amount of label smoothing.
+  --learning_rate_decay_factor LEARNING_RATE_DECAY_FACTOR
+                        Learning rate decay factor.
+  --num_epochs_per_decay NUM_EPOCHS_PER_DECAY
+                        Number of epochs after which learning rate decays.
+  --sync_replicas [SYNC_REPLICAS]
+                        Whether or not to synchronize the replicas during
+                        training.
+  --nosync_replicas
+  --replicas_to_aggregate REPLICAS_TO_AGGREGATE
+                        The Number of gradients to collect before updating
+                        params.
+  --moving_average_decay MOVING_AVERAGE_DECAY
+                        The decay to use for the moving average.If left as
+                        None, then moving averages are not used.
+  --dataset_name DATASET_NAME
+                        The name of the dataset to load.
+  --dataset_split_name DATASET_SPLIT_NAME
+                        The name of the train/test split.
+  --dataset_dir DATASET_DIR
+                        The directory where the dataset files are stored.
+  --labels_offset LABELS_OFFSET
+                        An offset for the labels in the dataset. This flag is
+                        primarily used to evaluate the VGG and ResNet
+                        architectures which do not use a background class for
+                        the ImageNet dataset.
+  --model_name MODEL_NAME
+                        The name of the architecture to train.
+  --preprocessing_name PREPROCESSING_NAME
+                        The name of the preprocessing to use. If left as
+                        `None`, then the model_name flag is used.
+  --batch_size BATCH_SIZE
+                        The number of samples in each batch.
+  --train_image_size TRAIN_IMAGE_SIZE
+                        Train image size
+  --max_number_of_steps MAX_NUMBER_OF_STEPS
+                        The maximum number of training steps.
+  --checkpoint_path CHECKPOINT_PATH
+                        The path to a checkpoint from which to fine-tune.
+  --checkpoint_exclude_scopes CHECKPOINT_EXCLUDE_SCOPES
+                        Comma-separated list of scopes of variables to exclude
+                        when restoring from a checkpoint.
+  --trainable_scopes TRAINABLE_SCOPES
+                        Comma-separated list of scopes to filter the set of
+                        variables to train.By default, None would train all
+                        the variables.
+  --ignore_missing_vars [IGNORE_MISSING_VARS]
+                        When restoring a checkpoint would ignore missing
+                        variables.
+  --noignore_missing_vars
