@@ -3,7 +3,7 @@
 export TF_CPP_MIN_LOG_LEVEL=3
 
 DATASET_DIR=/workspace/data/car-reco3-70
-TRAIN_DIR=/workspace/train_logs/5_car-reco3-70_inception_v4
+TRAIN_DIR=/workspace/train_logs/10_car-reco3-70_inception_v4
 CHECKPOINT_PATH=/workspace/checkpoints/inception_v4.ckpt
 DATASET_NAME=cars
 MODEL_NAME=inception_v4
