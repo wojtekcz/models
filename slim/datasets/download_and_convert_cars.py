@@ -37,19 +37,19 @@ import tensorflow as tf
 
 from datasets import dataset_utils
 
-_PHOTOS_DIR='car-reco3-photos'
+_PHOTOS_DIR='car-reco3-70-photos'
 
 # The URL where the Cars data can be downloaded.
 _DATA_URL = 'https://dl.dropboxusercontent.com/u/19206083/old_polish_cars_v4_photos-2017-02-28.tgz'
 
 # The number of images in the validation set.
-_NUM_VALIDATION = 350
+_NUM_VALIDATION = 5736
 
 # Seed for repeatability.
 _RANDOM_SEED = 0
 
 # The number of shards per dataset split.
-_NUM_SHARDS = 5
+_NUM_SHARDS = 10
 
 
 class ImageReader(object):

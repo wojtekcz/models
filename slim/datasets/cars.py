@@ -31,14 +31,14 @@ slim = tf.contrib.slim
 
 _FILE_PATTERN = 'car-reco3_%s_*.tfrecord'
 
-# car images count = 10025
-SPLITS_TO_SIZES = {'train': 9675, 'validation': 350}
+# car images count = 57364
+SPLITS_TO_SIZES = {'train': 51628, 'validation': 5736}
 
-_NUM_CLASSES = 10
+_NUM_CLASSES = 70
 
 _ITEMS_TO_DESCRIPTIONS = {
     'image': 'A color image of varying size.',
-    'label': 'A single integer between 0 and 4',
+    'label': 'A single integer between 0 and 69',
 }
 
 
