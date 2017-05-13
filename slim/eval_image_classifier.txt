@@ -1,0 +1,49 @@
+usage: eval_image_classifier.py [-h] [--batch_size BATCH_SIZE]
+                                [--max_num_batches MAX_NUM_BATCHES]
+                                [--master MASTER]
+                                [--checkpoint_path CHECKPOINT_PATH]
+                                [--eval_dir EVAL_DIR]
+                                [--num_preprocessing_threads NUM_PREPROCESSING_THREADS]
+                                [--dataset_name DATASET_NAME]
+                                [--dataset_split_name DATASET_SPLIT_NAME]
+                                [--dataset_dir DATASET_DIR]
+                                [--labels_offset LABELS_OFFSET]
+                                [--model_name MODEL_NAME]
+                                [--preprocessing_name PREPROCESSING_NAME]
+                                [--moving_average_decay MOVING_AVERAGE_DECAY]
+                                [--eval_image_size EVAL_IMAGE_SIZE]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --batch_size BATCH_SIZE
+                        The number of samples in each batch.
+  --max_num_batches MAX_NUM_BATCHES
+                        Max number of batches to evaluate by default use all.
+  --master MASTER       The address of the TensorFlow master to use.
+  --checkpoint_path CHECKPOINT_PATH
+                        The directory where the model was written to or an
+                        absolute path to a checkpoint file.
+  --eval_dir EVAL_DIR   Directory where the results are saved to.
+  --num_preprocessing_threads NUM_PREPROCESSING_THREADS
+                        The number of threads used to create the batches.
+  --dataset_name DATASET_NAME
+                        The name of the dataset to load.
+  --dataset_split_name DATASET_SPLIT_NAME
+                        The name of the train/test split.
+  --dataset_dir DATASET_DIR
+                        The directory where the dataset files are stored.
+  --labels_offset LABELS_OFFSET
+                        An offset for the labels in the dataset. This flag is
+                        primarily used to evaluate the VGG and ResNet
+                        architectures which do not use a background class for
+                        the ImageNet dataset.
+  --model_name MODEL_NAME
+                        The name of the architecture to evaluate.
+  --preprocessing_name PREPROCESSING_NAME
+                        The name of the preprocessing to use. If left as
+                        `None`, then the model_name flag is used.
+  --moving_average_decay MOVING_AVERAGE_DECAY
+                        The decay to use for the moving average.If left as
+                        None, then moving averages are not used.
+  --eval_image_size EVAL_IMAGE_SIZE
+                        Eval image size
