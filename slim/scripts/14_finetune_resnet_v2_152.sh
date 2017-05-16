@@ -14,8 +14,8 @@ python train_image_classifier.py \
     --dataset_name=${DATASET_NAME} \
     --dataset_split_name=train \
     --model_name=${MODEL_NAME} \
-    --checkpoint_path=${CHECKPOINT_PATH} \
     --checkpoint_exclude_scopes=resnet_v2_152/logits,resnet_v2_152/block3,resnet_v2_152/block4  \
     --trainable_scopes=resnet_v2_152/logits,resnet_v2_152/block3,resnet_v2_152/block4 \
     --save_summaries_secs=60 \
     --log_every_n_steps=100
+#     --checkpoint_path=${CHECKPOINT_PATH} \
