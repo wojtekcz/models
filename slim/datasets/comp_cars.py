@@ -29,16 +29,16 @@ from datasets import dataset_utils
 
 slim = tf.contrib.slim
 
-_FILE_PATTERN = 'car-reco3_%s_*.tfrecord'
+_FILE_PATTERN = 'comp-cars_%s_*.tfrecord'
 
-# car images count = 57364
-SPLITS_TO_SIZES = {'train': 51628, 'validation': 5736}
+# car images count = 208825
+SPLITS_TO_SIZES = {'train': 187942, 'validation': 20883}
 
-_NUM_CLASSES = 70
+_NUM_CLASSES = 444
 
 _ITEMS_TO_DESCRIPTIONS = {
     'image': 'A color image of varying size.',
-    'label': 'A single integer between 0 and 69',
+    'label': 'A single integer between 0 and 443',
 }
 
 
