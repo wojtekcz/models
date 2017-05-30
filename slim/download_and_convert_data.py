@@ -43,7 +43,7 @@ import tensorflow as tf
 from datasets import download_and_convert_cifar10
 from datasets import download_and_convert_flowers
 from datasets import download_and_convert_mnist
-from datasets import download_and_convert_cars
+from datasets import download_and_convert_car_reco3_70
 
 FLAGS = tf.app.flags.FLAGS
 
@@ -70,8 +70,8 @@ def main(_):
     download_and_convert_flowers.run(FLAGS.dataset_dir)
   elif FLAGS.dataset_name == 'mnist':
     download_and_convert_mnist.run(FLAGS.dataset_dir)
-  elif FLAGS.dataset_name == 'cars':
-    download_and_convert_cars.run(FLAGS.dataset_dir)
+  elif FLAGS.dataset_name == 'car_reco3_70':
+    download_and_convert_car_reco3_70.run(FLAGS.dataset_dir)
   else:
     raise ValueError(
         'dataset_name [%s] was not recognized.' % FLAGS.dataset_dir)

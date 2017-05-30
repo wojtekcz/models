@@ -4,7 +4,7 @@ export TF_CPP_MIN_LOG_LEVEL=3
 
 DATASET_DIR=/workspace/data/car-reco3-70
 TRAIN_DIR=/workspace/train_logs/15_car-reco3-70_resnet_v2_152
-DATASET_NAME=cars
+DATASET_NAME=car_reco3_70
 MODEL_NAME=resnet_v2_152
 
 python train_image_classifier.py \
