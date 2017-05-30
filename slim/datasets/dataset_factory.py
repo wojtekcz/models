@@ -22,6 +22,7 @@ from datasets import cifar10
 from datasets import flowers
 from datasets import old_polish_cars
 from datasets import car_reco3_70
+from datasets import comp_cars
 from datasets import imagenet
 from datasets import mnist
 
@@ -30,6 +31,7 @@ datasets_map = {
     'flowers': flowers,
     'old_polish_cars': old_polish_cars,
     'car_reco3_70': car_reco3_70,
+    'comp_cars': comp_cars,
     'imagenet': imagenet,
     'mnist': mnist,
 }

@@ -45,6 +45,7 @@ from datasets import download_and_convert_flowers
 from datasets import download_and_convert_mnist
 from datasets import download_and_convert_old_polish_cars
 from datasets import download_and_convert_car_reco3_70
+from datasets import download_and_convert_comp_cars
 
 FLAGS = tf.app.flags.FLAGS
 
@@ -75,6 +76,8 @@ def main(_):
     download_and_convert_old_polish_cars.run(FLAGS.dataset_dir)
   elif FLAGS.dataset_name == 'car_reco3_70':
     download_and_convert_car_reco3_70.run(FLAGS.dataset_dir)
+  elif FLAGS.dataset_name == 'comp_cars':
+    download_and_convert_comp_cars.run(FLAGS.dataset_dir)
   else:
     raise ValueError(
         'dataset_name [%s] was not recognized.' % FLAGS.dataset_dir)
